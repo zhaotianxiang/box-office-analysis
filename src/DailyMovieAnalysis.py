@@ -32,8 +32,10 @@ def getInfoFromMySQL(dates):
             print("Error to execute "+sql)
 
         rows = cursor.fetchall()
+        dailyBoxOfficeSum = 0.0
         for row in rows:
-            print(row)
+            dailyBoxOfficeSum = dailyBoxOfficeSum + float(row[1])
+            print(date+" "+str(dailyBoxOfficeSum))
     cursor.close()
     db.close()
     return rows
@@ -49,19 +51,146 @@ def dateRange(beginDate, endDate):
         date = dt.strftime("%Y-%m-%d")
     return dates
 def classifyDate():
-    springFestival = \
-    dateRange("2012-02-01","2013-02-02")+\
-    dateRange("2012-02-01","2013-02-02")+\
-    dateRange("2012-02-01","2013-02-02")+\
-    dateRange("2012-02-01","2013-02-02")+\
-    dateRange("2012-02-01","2013-02-02")
-    print(springFestival)
+    #元旦档
+    NewYearDay = \
+    dateRange("2011-01-01","2011-01-03")+\
+    dateRange("2012-01-01","2012-01-03")+\
+    dateRange("2013-01-01","2013-01-03")+\
+    dateRange("2014-01-01","2014-01-03")+\
+    dateRange("2015-01-01","2015-01-03")+\
+    dateRange("2016-01-01","2016-01-03")+\
+    dateRange("2016-12-31","2017-01-03")+\
+    dateRange("2017-12-31","2018-01-03")
+    print(NewYearDay)
+    #春节档
+    SpringFestival = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(SpringFestival)
+    #元宵档
+    LanternFestival = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(LanternFestival)
+    #清明档
+    ChingMingFestival = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(ChingMingFestival)
+    #五一档
+    Goichi = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(Goichi)
+    #端午档
+    DragonBoatFestival = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(DragonBoatFestival)
+    #中秋档
+    MidAutumnFestival  = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(MidAutumnFestival)
+    #十一档
+    ArmyDay = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(ArmyDay)
+    #平安夜档
+    ChristmasEve = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(ChristmasEve)
+    #七夕档
+    ChineseValentineDay = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(ChineseValentineDay)
+    #暑期档
+    SummerVacation = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(SummerVacation)
+    #寒假档
+    WinterVacation = \
+    dateRange("2011-02-02","2011-02-08")+\
+    dateRange("2012-01-22","2012-01-28")+\
+    dateRange("2013-02-09","2013-02-15")+\
+    dateRange("2014-01-31","2014-02-06")+\
+    dateRange("2015-02-18","2015-02-24")+\
+    dateRange("2016-02-07","2016-02-13")+\
+    dateRange("2017-01-27","2017-02-02")+\
+    dateRange("2018-02-16","2018-02-22")
+    print(WinterVacation)
+
+    return NewYearDay
 
 
 if __name__ == '__main__':
     #dates = dateRange(springFestival)
     #getInfoFromMySQL(dates)
-    classifyDate()
+    getInfoFromMySQL(classifyDate())
 
 
 

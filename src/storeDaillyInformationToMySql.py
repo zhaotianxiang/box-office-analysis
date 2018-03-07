@@ -41,7 +41,6 @@ def storeToDatabase():
 		try:
 			cursor.execute(sql)
 			db.commit()
-			cursor.close()
 			print("success to insert data into table")
 		except:
 			db.rollback()
@@ -51,8 +50,9 @@ def storeToDatabase():
 	file_read.close()
 
 if __name__ == '__main__':
-	createTable()
+	#createTable()
 	storeToDatabase()
+	cursor.close()
 	db.close()
 
 
