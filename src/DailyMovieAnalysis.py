@@ -10,22 +10,8 @@ import matplotlib.pyplot as plt
 from pylab import *  
 mpl.rcParams['font.sans-serif'] = ['SimHei'] 
 #print(sys.getdefaultencoding())
-
-#连接Mysql数据库连接
-def connectMySQL():
-    db = pymysql.connect("47.100.51.19","root","aini1314@xiaoqing","movie",charset='utf8')
-	#后面的编码格式极其重要，耽误了两个小时，下次一定操作数据的时候一定要注意设置编码的一致
-    cursor = db.cursor()
-    sql = "SELECT VERSION()"
-    try:
-        cursor.execute(sql)
-        print("Success to connect MYSQL")
-    except:
-    	print("Error to connect MYSQL")
-    data = cursor.fetchone()
-    print("MYSQL VERSION is "+data[0])
-    cursor.close()
-    return db
+#这是自定义模块
+from ConnectToMySQL import connectMySQL
 
 def getInfoFromMySQL(dates):
     db = connectMySQL()
