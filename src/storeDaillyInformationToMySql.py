@@ -3,13 +3,14 @@
 import pymysql 
 import sys
 print(sys.getdefaultencoding())
-db = pymysql.connect("47.100.51.19","root","aini1314@xiaoqing","movie",charset='utf8')
+from ConnectToMySQL import connectMySQL
+db = connectMySQL()
 #后面的编码格式极其重要，耽误了两个小时，下次一定操作数据的时候一定要注意设置编码的一致
 cursor = db.cursor()
 
 def createTable():
     cursor.execute("DROP TABLE IF EXISTS DailyBoxOffices")
-    sql = """CREATE TABLE DailyBoxOffices(
+    sql = """CREATE TABLE (
     itemID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     itemDate DATE NOT NULL,
     movieName VARCHAR(45) NOT NULL,
@@ -50,9 +51,9 @@ def storeToDatabase():
 	file_read.close()
 
 if __name__ == '__main__':
-	#createTable()
-	storeToDatabase()
-	cursor.close()
-	db.close()
+	#createTable() 注意千万不要执行了，否则删掉了以前的数据库
+	#storeToDatabase()
+	#cursor.close()
+	#db.close()
 
 
