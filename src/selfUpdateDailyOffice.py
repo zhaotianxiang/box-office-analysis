@@ -3,6 +3,8 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 import pymysql
+#这是自定义模块
+from ConnectToMySQL import connectMySQL
 
 headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -10,19 +12,6 @@ headers = {
     "Accept-Language": "en-US,en;q=0.5",
     "Connection": "keep-alive",
     "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0"}
-
-def connectMySQL():
-    db = pymysql.connect("localhost","root","aini1314@xiaoqing","movie",charset='utf8')
-    cursor = db.cursor()
-    sql = "SELECT VERSION()"
-    try:
-        cursor.execute(sql)
-        #print("Success to connect MYSQL")
-    except:
-    	print("Error to connect MYSQL")
-    data = cursor.fetchone()
-    #print("MYSQL VERSION is "+data[0])
-    return db
 
 def storeToDatabase(db,line):
 	item = line.split(',')
@@ -122,8 +111,7 @@ def updateData():
 				release_time = '--'
 		# to change the data as same formate
 		text =date+','+movie_name +','+movie_daily_BoxOffice+','+ movie_total_BoxOffice+','+percentage_screenings+','+attendance+','+release_time
-		db = pymysql.connect("47.100.51.19","root","aini1314@xiaoqing","movie",charset='utf8')
-		cursor = db.cursor()
+		db = connectMySQL()
 		storeToDatabase(db,text)
 		db.close()
 if __name__ == '__main__':
