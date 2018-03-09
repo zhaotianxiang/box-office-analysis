@@ -6,6 +6,7 @@ import pymysql
 import json
 #这是自定义模块
 from ConnectToMySQL import connectMySQL
+import time
 
 headers = {
     "Accept": "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8",
@@ -35,6 +36,10 @@ def createTable():
         print("successed to create table!\n")
     except:
     	print("error to create table!\n")
+    cursor.close()
+    db.close()
+###########################################################
+##以上永不执行
 def getInfor():
 	get_url = 'http://www.cbooo.cn//BoxOffice/GetHourBoxOffice'
 	html=requests.get(get_url,headers=headers).text
@@ -44,9 +49,11 @@ def getInfor():
 	#print(jsonData["data2"])
 	sumInformation = jsonData["data1"]
 	itemDatas = jsonData["data2"]
+	date = time.strftime("%Y-%m-%d")
+	# print (date)
 	for i in range(0,11):
 		item = itemDatas[i]
-		print(item)
+		#print(item)
 		#以下是获取了七项数据
 		rank = item['Irank']
 		mId = item['mId']
@@ -56,11 +63,24 @@ def getInfor():
 		movieDay = item['movieDay']
 		#票房占比
 		boxProportion =item['boxPer']
-		print(movieName)
-
-
-
-
+		data = (str(date),str(rank),str(movieName),str(boxOffice),str(sumBoxOffice),
+			str(boxProportion),str(movieDay),str(mId))
+		sql = "INSERT INTO RealtimeDatasFromEN \
+		(itemDate,rank,movieName,boxOffice,sumBoxOffice,boxProportion,movieDay,mId) \
+		VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')" % tuple(data)
+		# 插入数据库
+		db = connectMySQL()
+		cursor = db.cursor()
+		print(data)
+		try:
+			cursor.execute(sql)
+			db.commit()
+			print("commit sucess!")
+		except:
+			db.rollback()
+			print("commit error!")
+			cursor.close()
+		cursor.close()
+		db.close()
 if __name__ == '__main__':
-	#getInfor()
-	createTable()
+	getInfor()
