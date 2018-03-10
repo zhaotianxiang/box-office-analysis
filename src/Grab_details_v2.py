@@ -121,7 +121,7 @@ def getDetials_test(url):
 功能：将收集到每一个电影页面的详细信息保存到 movie_details.txt 文件中
 '''
 def storeInfor():
-    file_to_write = open('./data/movie_details.txt','a',encoding='utf-8')
+    file_to_write = open('../data/movie_details.txt','a',encoding='utf-8')
     statue=True
     for line in open('../data/urls.txt','r').readlines():
         url=str(line).replace('\n','')
