@@ -197,6 +197,7 @@ def drawHistogram():
         numb_list.append(value)
         print(value)
     file_to_reader.close()
+    plt.title("Schedule quantitative results")
     plt.bar(range(len(numb_list)), numb_list,color='rgb',tick_label=name_list)  
     plt.show()  
 
@@ -252,7 +253,7 @@ if __name__ == '__main__':
     # datas.append(avgDailyBoxOffice)
     # saveResultToTxt(datas)
     # drawHistogram()
-    quantDate()
+    drawHistogram()
 
 
 
