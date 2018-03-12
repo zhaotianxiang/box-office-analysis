@@ -48,6 +48,7 @@ def storeToDatabase():
 			print("error to insert data into table")
 			#break
 			continue
+	db.close()
 	file_read.close()
 
 if __name__ == '__main__':
