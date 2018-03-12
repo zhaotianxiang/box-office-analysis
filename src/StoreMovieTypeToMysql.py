@@ -1,9 +1,4 @@
-import re
-import datetime
-import requests
-from bs4 import BeautifulSoup
-import pymysql
-import json
+
 #这是自定义模块
 from ConnectToMySQL import connectMySQL
 import time
@@ -65,13 +60,16 @@ def storeInfor():
 		VALUES ('%s','%s','%s','%s','%s')" % tuple(data)
 		try:
 			cursor.execute(sql)
+			db.commit()
 			print("successed to insert data",data)
 		except:
+			db.rollback()
 			print("fail to insert data",da)
 
 		cursor.close()
 	db.close()
 
 if __name__ == '__main__':
-	createTable()
-	storeInfor()
+	# createTable()
+	# storeInfor()
+	# 一般不用再次执行了
