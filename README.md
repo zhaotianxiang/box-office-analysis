@@ -1,2 +1,2 @@
 # MovieBoxOfficeAnalysisGit
-This ia a project for BoxOffice analysis
+This is a project for BoxOffice analysis
