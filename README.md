@@ -1,4 +1,5 @@
-# MovieBoxOfficeAnalysisGit
+# Movie box office analysis
+
 This is a project for BoxOffice analysis
 
 中国科学技术大学软件学院工程实践项目
