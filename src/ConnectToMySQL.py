@@ -2,7 +2,7 @@ import pymysql
 #这是一个数据库连接模块，代码复用
 def connectMySQL():
     db = pymysql.connect(
-    host='47.100.51.19',
+    host='tianzhaoruixiang',
     user='root',
     passwd='aini1314@xiaoqing',
     db='movie',
